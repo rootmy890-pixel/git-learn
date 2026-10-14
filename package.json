@@ -1,6 +1,6 @@
 {
   "name": "git-learn",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Learning Git on devsecops-lab",
   "author": "DevSecOps Lab <devsecops@lab.local>",
   "license": "MIT",
