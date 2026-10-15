@@ -1,0 +1,14 @@
+#!/bin/bash
+echo "🔒 Scanning for secrets with gitleaks..."
+
+gitleaks protect --staged --verbose --redact
+
+if [ $? -ne 0 ]; then
+    echo ""
+    echo "🚨 SECRETS DETECTED! Commit aborted."
+    echo "   Fix the issue and try again."
+    exit 1
+fi
+
+echo "✅ No secrets found!"
+exit 0
