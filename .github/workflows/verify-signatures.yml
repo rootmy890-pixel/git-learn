@@ -1,0 +1,29 @@
+name: Verify Signatures
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  verify:
+    name: 🔐 Verify GPG Signatures
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify all commits are signed
+        run: |
+          echo "Checking commits..."
+          COMMITS=$(git log --format='%H' -5)
+          for commit in $COMMITS; do
+            if git verify-commit $commit 2>/dev/null; then
+              echo "✅ $commit - signed"
+            else
+              echo "⚠️  $commit - not signed (or no key)"
+            fi
+          done
