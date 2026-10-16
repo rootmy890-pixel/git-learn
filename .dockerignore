@@ -1,0 +1,12 @@
+.git
+.gitignore
+.github
+.githooks
+*.md
+!README.md
+node_modules
+__pycache__
+*.pyc
+.pytest_cache
+.env
+*.log
